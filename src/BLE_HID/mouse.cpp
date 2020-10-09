@@ -31,14 +31,14 @@ void BLEMouse::move(int x, int y, signed char wheel) {
   //uint16_t _x = (uint16_t) ((32767l * ((uint32_t) x)) / 1053); // if 10000l limit = 5000
   //uint16_t _y = (uint16_t) ((32767l * ((uint32_t) y)) / 658);
   int _x = (int) ((32767l * ((long) x)) / 1080); // if 10000l limit = 5000
-  int _y = (int) ((32767l * ((long) y)) / 810);
+  int _y = (int) ((32767l * ((long) y)) / 1080);
   //int _x = x;
   //int _y = y;
 
   mouseMove[0] = this->_button;
   mouseMove[1] = _x & 0xFF;
   mouseMove[2] = (_x >> 8) & 0xFF;
-  mouseMove[4] = _y & 0xFF;
+  mouseMove[3] = _y & 0xFF;
   mouseMove[4] = (_y >> 8) & 0xFF;
 
   this->send(mouseMove);

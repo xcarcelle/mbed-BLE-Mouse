@@ -27,11 +27,11 @@ report_map_t MOUSE_REPORT_MAP = {
     USAGE(1),           0x30,         //   X
     USAGE(1),           0x31,         //   Y
     // USAGE(1),           0x38,         //   Wheel
-    //PHYSICAL_MINIMUM(2), 0x00, 0x00,         //  0 
-    PHYSICAL_MAXIMUM(2), 0xff, 0x7f,   //  10000 
+    PHYSICAL_MINIMUM(2), 0x00, 0x00,         //  0 
+    PHYSICAL_MAXIMUM(2), 0xff, 0x7f,   //  32767 
     LOGICAL_MINIMUM(2), 0x01, 0x80,    //  -32767 
     LOGICAL_MAXIMUM(2), 0xff, 0x7f,    //  32767
-    UNIT(2), 0x00, 0x00,         //  No unit 
+    //UNIT(2), 0x00, 0x00,         //  No unit 
     REPORT_SIZE(1),     0x10,         //   Three bytes
     REPORT_COUNT(1),    0x02,
     INPUT(1),           0x06,         //   Data, Variable, Relative
