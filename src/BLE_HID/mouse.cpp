@@ -18,14 +18,26 @@ void BLEMouse::click(uint8_t b) {
   this->release(b);
 }
 
-void BLEMouse::move(signed char x, signed char y, signed char wheel) {
-  unsigned char mouseMove[4]= { 0x00, 0x00, 0x00, 0x00 };
+//void BLEMouse::move(signed char x, signed char y, signed char wheel) {
+//void BLEMouse::move(uint16_t x, uint16_t y, signed char wheel) {
+void BLEMouse::move(int x, int y, signed char wheel) {
+  unsigned char mouseMove[5]= { 0x00, 0x00, 0x00, 0x00, 0x00 };
 
   // send key code
+  //mouseMove[0] = this->_button;
+  //mouseMove[1] = x;
+  //mouseMove[2] = y;
+  //mouseMove[3] = wheel;
+  //uint16_t _x = (uint16_t) ((32767l * ((uint32_t) x)) / 1080); // if 10000l limit = 5000
+  //uint16_t _y = (uint16_t) ((32767l * ((uint32_t) y)) / 810);
+  int _x = x;
+  int _y = y;
+
   mouseMove[0] = this->_button;
-  mouseMove[1] = x;
-  mouseMove[2] = y;
-  mouseMove[3] = wheel;
+  mouseMove[1] = _x & 0xFF;
+  mouseMove[2] = (_x >> 8) & 0xFF;
+  mouseMove[4] = _y & 0xFF;
+  mouseMove[4] = (_y >> 8) & 0xFF;
 
   this->send(mouseMove);
 }
